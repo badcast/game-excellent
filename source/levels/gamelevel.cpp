@@ -20,7 +20,11 @@ void GameLevel::start()
 
     auto spr = g->addComponent<SpriteRenderer>();
     spr->setSpriteFromTextureToGC(p);
-    spr->size *= 0.6f;
+    spr->size *= 0.2f;
+
+    auto clone = Instantiate(g, Vec2::one, g->transform());
+
+    g->transform()->position();
 }
 
 void GameLevel::update()
@@ -32,9 +36,8 @@ void GameLevel::update()
     g->transform()->localAngle(a + *static_cast<float*>(ui->getResources(sld)));
 }
 
-void GameLevel::onDrawGizmos() {
-    Gizmos::DrawTextOnPosition_Legacy(Camera::ViewportToWorldPoint(Vec2::half), std::to_string(*static_cast<float*>(ui->getResources(sld))));
-
-
-
- }
+void GameLevel::onDrawGizmos()
+{
+    Gizmos::DrawStorm(Vec2::one, 200, 15);
+    Gizmos::DrawTextOnPosition(Camera::ViewportToWorldPoint(Vec2::half), std::to_string(*static_cast<float*>(ui->getResources(sld))));
+}
