@@ -40,17 +40,19 @@ int main()
     }
 #endif
 
-    Application::init(1024, 600);
+    Application::init();
+
+    Application::show({ 1024, 600 });
 
     auto level = new GameLevel;
 
-    Application::loadLevel(level);
+    Application::load_world(level);
 
     Application::simulate();
 
     delete level;
 
-    Application::Quit();
+    Application::utilize();
 
 #if USE_SINGLE_RUN
     sem_close(sem);
