@@ -40,19 +40,19 @@ int main()
     }
 #endif
 
-    Application::init();
+    RoninSimulator::init();
 
-    Application::show({ 1024, 600 });
+    RoninSimulator::show({ 1024, 600 });
 
     auto level = new GameLevel;
 
-    Application::load_world(level);
+    RoninSimulator::load_world(level);
 
-    Application::simulate();
+    RoninSimulator::simulate();
 
     delete level;
 
-    Application::utilize();
+    RoninSimulator::utilize();
 
 #if USE_SINGLE_RUN
     sem_close(sem);
